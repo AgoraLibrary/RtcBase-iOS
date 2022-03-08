@@ -95,6 +95,8 @@ protocol RtcEngineInterface:
     func enableContentInspect(_ params: NSDictionary, _ callback: Callback)
 
     func setAgoraLibPath(_ params: NSDictionary, _ callback: Callback)
+
+    func setAVSyncSource(_ params: NSDictionary, _ callback: Callback)
 }
 
 protocol RtcEngineUserInfoInterface {
@@ -1300,5 +1302,9 @@ class RtcEngineManager: NSObject, RtcEngineInterface {
 
     @objc func stopRecording(_ callback: Callback) {
         callback.code(mediaRecorder?.stopRecording())
+    }
+
+    @objc func setAVSyncSource(_ params: NSDictionary, _ callback: Callback) {
+        callback.code(engine?.setAVSyncSource(params["channelId"] as? String, uid: (params["uid"] as! NSNumber).uintValue))
     }
 }
