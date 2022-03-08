@@ -392,12 +392,10 @@ class RtcChannelManager: NSObject, RtcChannelInterface {
     }
 
     @objc func pauseAllChannelMediaRelay(_ params: NSDictionary, _ callback: Callback) {
-        callback.code(-Int32(AgoraErrorCode.notSupported.rawValue))
-//        callback.code(self[params["channelId"] as! String]?.pauseAllChannelMediaRelay())
+        callback.code(self[params["channelId"] as! String]?.pauseAllChannelMediaRelay())
     }
 
     @objc func resumeAllChannelMediaRelay(_ params: NSDictionary, _ callback: Callback) {
-        callback.code(-Int32(AgoraErrorCode.notSupported.rawValue))
-//        callback.code(self[params["channelId"] as! String]?.resumeAllChannelMediaRelay())
+        callback.code(self[params["channelId"] as! String]?.resumeAllChannelMediaRelay())
     }
 }
